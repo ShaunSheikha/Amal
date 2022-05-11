@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.HoldRequestPage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:HoldRequestViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="local:CustomPicker">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TitleColor" Value="#808080"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                
+                <!--Unit Info-->
+                <StackLayout Padding="5">
+                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                        <Image Source="location.png" HeightRequest="30"/>
+                        <Label VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Address}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding City}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding State}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Zipcode}"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                        <Image Source="XlSuite.png" HeightRequest="30"/>
+                        <Label VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Name}"/>
+                                        <Span Text=" - "/>
+                                        <Span Text="{Binding SqFeet}"/>
+                                        <Span Text=" sqFeet"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+                <Label Margin="15,10,0,0" Text="Fill in your information below:" TextColor="DarkRed" FontSize="16" />
+                <!--User Info-->
+                <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Text="Hold Name:" FontFamily="Bold-Assitant" FontSize="18" Margin="5,0,0,0" />
+                        <Entry x:Name="tourName" Placeholder="Hold Request Name (optional)" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding ReservationName}"  TextColor="LightSlateGray"  />
+                    </StackLayout>
+                    <Label Text="Hold date:" FontFamily="Bold-Assitant" FontSize="18" Margin="5,20,0,0" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+
+                        <Label Text="{Binding TourStartDate, StringFormat='{0:MM/dd/yyyy}'}" TextColor="LightSlateGray" Padding="5,0,0,0"  />
+                        <Label Text=" For 72 Hours " VerticalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <Label Text="Choose a payment option for $100 Deposit: " FontFamily="Bold-Assitant" FontSize="18" Margin="5,20,0,0"/>
+                    <local:CustomPicker Title="Payment Type"
+                        HorizontalTextAlignment="Start"
+                        SelectedItem="{Binding PaymentType}" TextColor="LightSlateGray" >
+                        <Picker.Items>
+                            <x:String>Card XXXX-XXXX-XXXX-9351</x:String>
+                            <x:String>Card XXXX-XXXX-XXXX-3574</x:String>
+                            <x:String>Named Card</x:String>
+                            <x:String>Bank Info</x:String>
+                        </Picker.Items>
+                    </local:CustomPicker>
+                    <Label Text="Reservations will be held for 3 days. You can cancel anytime within these 3 days. Your credit card will be charged $100."
+                       HorizontalTextAlignment="Center" FontSize="16"
+                       Padding="20"/>
+                </StackLayout>
+
+                <Button Text="Submit"
+                    StyleClass="defaultButton"
+                    VerticalOptions="EndAndExpand"
+                    Margin="10"
+                    Clicked="SubmitHoldRequestClicked"/>
+                
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

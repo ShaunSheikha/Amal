@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.MapPage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:MapViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <x:String x:Key="CustomValueLabeStringFormat">{0:c0}</x:String>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="rangeSliderLabel">
+                <Setter Property="TextColor" Value="{StaticResource Light}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            
+            <!--Filters-->
+            <StackLayout BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Padding="10,10,10,0" >
+
+                <!--Always on Filters-->
+                <AbsoluteLayout>
+                    <StackLayout Orientation="Horizontal"  AbsoluteLayout.LayoutBounds=".5,0" Spacing="10">
+                        <Image Source="white_zip.png"/>
+                        <Entry x:Name="zipcodeEntered" 
+                               WidthRequest="250"
+                               Keyboard="Numeric"
+                               Placeholder="Enter your zip code (e.g 92130)" 
+                               TextColor="white"  
+                               PlaceholderColor="white" 
+                               Completed="ZipcodeEntered" 
+                               FontFamily="Assistant"
+                               Text="{Binding Zipcode}"/>
+                    </StackLayout>
+                    <ImageButton Source="white_filter.png" 
+                                 BackgroundColor="Transparent" 
+                                 HeightRequest="24" 
+                                 HorizontalOptions="End"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                                 AbsoluteLayout.LayoutBounds="1,.2"
+                                 Command="{Binding ToggleFiltersCommand}"
+                                 BorderColor="{StaticResource Light}"
+                                 BorderWidth="1"
+                                 CornerRadius="5"/>
+
+                </AbsoluteLayout>
+                
+                <!--Hideable Filters-->
+                <StackLayout Orientation="Horizontal"  Spacing="10"  IsVisible="{Binding FiltersVisible}">
+                    
+                    <Image Source="white_calender.png" />
+                    <DatePicker x:Name="moveInDateEntered" TextColor="White"  FontFamily="Assistant"/>
+                    <Label Text="(Expected Move-In Date)" TextColor="White"  FontFamily="Assistant" Padding="10,15,0,0" />
+
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  Spacing="10"  IsVisible="{Binding FiltersVisible}">
+                    <Image Source="white_layout.png"/>
+                    <Picker x:Name="layoutEntered"
+                            Title="Select Floor Plan"
+                            WidthRequest="150"
+                            TitleColor="{StaticResource Light}"
+                            TextColor="{StaticResource Light}"
+                            FontFamily="Assistant"
+                            SelectedItem="{Binding RoomType}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Studio</x:String>
+                                <x:String>Suite</x:String>
+                                <x:String>XL Suite</x:String>
+                                <x:String>Penthouse</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                </StackLayout>
+                <StackLayout IsVisible="{Binding FiltersVisible}" Margin="5,10,0,0">
+                    <Label Text="Select Price Range" TextColor="{StaticResource Light}"/>
+
+                    <xct:RangeSlider x:Name="rangeSlider"
+                                     MaximumValue="10000"
+                                     MinimumValue="500"
+                                     StepValue="50"
+                                     LowerValue="{Binding LowerPriceValue, Mode=TwoWay}"
+                                     UpperValue="{Binding UpperPriceValue, Mode=TwoWay}"
+                                     Padding="0,0,0,10"
+                                     ThumbSize="15"  
+                                     ValueLabelStringFormat="{StaticResource CustomValueLabeStringFormat}"
+                                     ThumbColor="{StaticResource Accent}"
+                                     TrackHighlightColor="{StaticResource Accent}"
+                                     ThumbBorderColor="{StaticResource Accent}"
+                                     ValueLabelStyle="{StaticResource rangeSliderLabel}"/>
+
+                </StackLayout>
+                <!--
+                <StackLayout>
+                    <Button Text="Apply" Margin="210,10,210,10"
+                            FontSize="Medium"
+                            TextColor="{StaticResource Primary}"
+                            BackgroundColor="White" Clicked="ApplyButtonClicked"
+                            />
+                </StackLayout>
+                -->
+                
+                
+            </StackLayout>
+            
+            <!--Map-->
+            <StackLayout VerticalOptions="FillAndExpand">
+                <AbsoluteLayout VerticalOptions="FillAndExpand">
+
+                    <local:CustomMap x:Name="map" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+                    <Button Text="View List" StyleClass="defaultButton" AbsoluteLayout.LayoutBounds=".5,.9" AbsoluteLayout.LayoutFlags="PositionProportional" Clicked="ViewHotelList"></Button>
+
+                </AbsoluteLayout>
+            </StackLayout>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

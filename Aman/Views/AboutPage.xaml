@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.AboutPage"
+             xmlns:vm="clr-namespace:Aman.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        
+            <StackLayout Spacing="0">
+                
+                <!--Logo-->
+                <StackLayout  HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}">
+                    <AbsoluteLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+                        
+                        <Label Text="A M A L" 
+                           FontSize="80" 
+                           TextColor="{StaticResource Light}" 
+                           AbsoluteLayout.LayoutBounds=".5,.5" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional" />
+                        
+                        <Rectangle Fill="{StaticResource Accent}"
+                               WidthRequest="200"
+                               HeightRequest="5"
+                               HorizontalOptions="Start" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0,.1"/>
+
+                        <Rectangle Fill="{StaticResource Accent}"
+                               WidthRequest="200"
+                               HeightRequest="5"
+                               HorizontalOptions="Start" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="1,.9"/>
+                        
+                       
+
+
+
+                    </AbsoluteLayout>
+            </StackLayout>
+
+                <!--Content-->
+                <StackLayout VerticalOptions="FillAndExpand">
+                    
+                    <!--About-->
+                    <StackLayout Padding="0,10,0,0">
+
+                        <Label HorizontalTextAlignment="Start" FontSize="22" FontFamily="Questrial" Padding="20">
+                            <Label.Text>
+                            This service promotes living in hotel homes. We aim to 
+                            enable you to take advantage of the ready-to-go
+                            living accommodations by giving you access to the variety of floor plans, pricing and locations the hotels community has to offer.
+                        </Label.Text>
+                        </Label>
+                    
+                    </StackLayout>
+                    
+                    <!--Contact-->
+                    <StackLayout>
+                    <Label Text="Contact Us" FontSize="20" HorizontalOptions="Center"></Label>
+
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="0" Padding="30">
+                                <Image Source="phone.png"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="30">
+                                <Image Source="email.png"/>
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                    
+                </StackLayout>
+                
+            </StackLayout>
+        
+        <!--Credit to google fonts + icons-->
+        
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.HomePage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        
+        <!--Main Content-->
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="180"/>
+                </Grid.RowDefinitions>
+
+                <!--Logo-->
+                <StackLayout BackgroundColor="{StaticResource Primary}"  HorizontalOptions="FillAndExpand"  HeightRequest="140" Grid.Row="0">
+                    <AbsoluteLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+                        <Image Source="AmalLogoTransparent.png" AbsoluteLayout.LayoutBounds=".4,.5,.9,.9" AbsoluteLayout.LayoutFlags="All"/>
+                        <!--
+                        
+                        <Label Text="A M A L" 
+                           FontSize="80" 
+                           TextColor="{StaticResource Light}" 
+                           AbsoluteLayout.LayoutBounds=".5,.5" 
+                           AbsoluteLayout.LayoutFlags="PositionProportional" />
+                        
+                        Decorative Lines
+                        <Rectangle Fill="{StaticResource Accent}"
+                               WidthRequest="200"
+                               HeightRequest="5"
+                               HorizontalOptions="Start" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0,.1"/>
+
+                        <Rectangle Fill="{StaticResource Accent}"
+                               WidthRequest="200"
+                               HeightRequest="5"
+                               HorizontalOptions="Start" 
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="1,.9"/>
+                        
+                        -->
+                        
+                    </AbsoluteLayout>
+                </StackLayout>
+
+                <!--Mission Statement-->
+                <StackLayout Orientation="Vertical" Padding="5" Spacing="5" Grid.Row="1">
+
+                    <Label  FontSize="29" Padding="0,15,0,10" HorizontalTextAlignment="Center" FontFamily="Bold-Assitant"  >
+                        <Label.Text>
+                            Explore the ready-to-go Homes in Hotels
+                        </Label.Text>
+                    </Label>
+
+                    <Label FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                        <Label.Text>
+                            Enjoy a comfortable, efficient, &amp; stylish living experience
+                        </Label.Text>
+                    </Label>
+                    <Line HorizontalOptions="CenterAndExpand" X1="0" X2="150" Stroke="black" Margin="10, 10, 10, 40"/>
+
+                    <AbsoluteLayout>
+                        <Image  Margin="10,0,0,0" Source="one.png" WidthRequest="30"/>
+                        <Label Text="Search" 
+                               Padding="10,0" 
+                               FontSize="Large" 
+                               FontFamily="Bold-Assitant"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds=".1,0"
+                               />
+
+                    </AbsoluteLayout>
+                    <Label Text="Quickly to find your home" Padding="60,0,0,30" FontSize="Subtitle"/>
+
+                    <AbsoluteLayout>
+                        <Image Margin="10,0,0,0" Source="two.png" WidthRequest="30"/>
+                        <Label Text="Tour" 
+                               Padding="10,0" 
+                               FontSize="Large" 
+                               FontFamily="Bold-Assitant"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds=".1,0"
+                               />
+
+                    </AbsoluteLayout>
+                    <Label Text="Conveniently with virtual or In-person tours"  Padding="60,0,0,30" FontSize="Subtitle"/>
+
+                    <AbsoluteLayout>
+                        <Image Margin="10,0,0,0" Source="three.png" WidthRequest="30"/>
+                        <Label Text="Move In" 
+                               Padding="10,0" 
+                               FontSize="Large" 
+                               FontFamily="Bold-Assitant"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds=".1,0"
+                               />
+
+                    </AbsoluteLayout>
+                    <Label Text="Efficiently with less paperwork and more ready-to-go services" Padding="60,0,0,30" FontSize="Subtitle"/>
+
+                    <AbsoluteLayout>
+                        <Image Margin="10,0,0,0" Source="four.png" WidthRequest="30"/>
+                        <Label Text="Move Out" 
+                               Padding="10,0" 
+                               FontSize="Large" 
+                               FontFamily="Bold-Assitant"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds=".1,0"
+                               />
+
+                    </AbsoluteLayout>
+                    <Label Text="Seamlessly with all billing finalized the same day. No strings attached after moving out" Padding="60,0,0,0" FontSize="Subtitle"/>
+
+
+                </StackLayout>
+
+                <!--Property Search-->
+                <StackLayout Padding="10" Grid.Row="2" VerticalOptions="EndAndExpand">
+
+                    <Button Margin="30,0,30,10" 
+                                Text="Start Search"
+                                Clicked="SearchStarted"
+                                HorizontalOptions="FillAndExpand"
+                                StyleClass="defaultButton"/>
+
+                </StackLayout>
+
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

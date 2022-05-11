@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3830F06F-AC1B-4948-82E4-EB998B3F0C1B}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Aman.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>Aman.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CustomMapRenderer.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <BundleResource Include="Resources\icon_about.png" />
+    <BundleResource Include="Resources\icon_about%402x.png" />
+    <BundleResource Include="Resources\icon_about%403x.png" />
+    <BundleResource Include="Resources\icon_feed.png" />
+    <BundleResource Include="Resources\icon_feed%402x.png" />
+    <BundleResource Include="Resources\icon_feed%403x.png" />
+    <BundleResource Include="Resources\xamarin_logo.png" />
+    <BundleResource Include="Resources\xamarin_logo%402x.png" />
+    <BundleResource Include="Resources\xamarin_logo%403x.png" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>1.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>5.0.0.2291</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Aman\Aman.csproj">
+      <Project>{EE92607E-374C-4900-B4BA-8046F8FAACFC}</Project>
+      <Name>Aman</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hotel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\misc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gym.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\roomService.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\spa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\penthouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\studio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\suite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\xLSuite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tour.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blur.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_calender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_hotel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_figure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_leftArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_rightArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\businessCenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\closet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hotTub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kingBed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fridge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\laundry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\parking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\microwave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\stove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wifi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_1_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_2_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_3_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_4_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address_5_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\westInnSuites.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hiltonHomewoodSuites.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\four.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\one.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\three.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\two.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\desk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\housekeeping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sqFeet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\white_confirmCheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\AmalLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\AmalLogoTransparent.png" />
+  </ItemGroup>
+</Project>

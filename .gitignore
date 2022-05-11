@@ -1,0 +1,13 @@
+Aman/bin
+Aman/obj
+
+Aman.Android/bin
+Aman.Android/obj
+Aman.Android/Properties
+
+
+Aman.iOS/bin
+Aman.iOS/obj
+Aman.iOS/Properties
+Aman.iOS/AppDelegate.cs
+Aman.iOS/AppDelegate

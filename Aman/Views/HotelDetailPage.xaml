@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.HotelDetailPage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             xmlns:model="clr-namespace:Aman.Models"
+             Title="{Binding TitleCaption}">
+
+    <ContentPage.BindingContext>
+        <local:HotelDetailViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <!--Selected available room color, Works on COllection View not Flex Layout-->
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource Accent}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <ScrollView>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--Hotel Images-->
+                <StackLayout BackgroundColor="black" HorizontalOptions="Fill" Grid.Row="0" Spacing="0">
+                    <AbsoluteLayout VerticalOptions="FillAndExpand" HeightRequest="270">
+
+                        <Image x:Name="currentImage" Source="{Binding InitialImage}" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.5,1,1"/>
+                        <ImageButton Source="white_leftArrow.png" AbsoluteLayout.LayoutBounds="0,.5" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent" Command="{Binding LeftArrowClickedCommand}" CommandParameter="{x:Reference currentImage}"/>
+                        <ImageButton Source="white_rightArrow.png" AbsoluteLayout.LayoutBounds="1,.5" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent" Command="{Binding RightArrowClickedCommand}" CommandParameter="{x:Reference currentImage}"/>
+                        <!--TODO Gesture swipe through pictures
+                        
+                        <AbsoluteLayout.GestureRecognizers>
+
+                            <SwipeGestureRecognizer Direction="Left"
+                                                    Command="{Binding RightArrowClickedCommand}"		
+                                                    CommandParameter="{x:Reference currentImage}"/>
+                            <SwipeGestureRecognizer Direction="Right"
+                                                    Command="{Binding LeftArrowClickedCommand}"		
+                                                    CommandParameter="{x:Reference currentImage}"/>
+                        </AbsoluteLayout.GestureRecognizers>
+                        -->
+
+                    </AbsoluteLayout>
+                    
+
+                </StackLayout>
+                
+                <!--Hotel Info-->
+                <StackLayout Spacing="10" Padding="15" Grid.Row="1">
+                    <Label FontSize="Title" LineBreakMode="WordWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding Address}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label FontSize="Title" LineBreakMode="WordWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding City}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="{Binding State}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="{Binding Zipcode}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                
+                <!--Amenities & Rooms-->
+                <StackLayout Spacing="10" Padding="0" Grid.Row="2">
+                    
+                    <!--Amenities Header-->
+                    <AbsoluteLayout HorizontalOptions="FillAndExpand" >
+                        <Polyline 
+                                      Points="0 0,210 0,180 45, 0 44"
+                                      StrokeLineJoin="Round" 
+                                      Fill="{StaticResource Primary}">
+                        </Polyline>
+                        <Label Text="Amenities" FontSize="Medium"  Padding="20,10,0,10" TextColor="white"/>
+
+                    </AbsoluteLayout>
+                    <!--Amenities List-->
+                    <FlexLayout Margin="15,0,0,0" BindableLayout.ItemsSource="{Binding Amenities}" 
+                                HeightRequest="100"
+                                Wrap="Wrap"
+                                Direction="Column"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                AlignContent="Start"
+                                x:Name="AmenitiesList">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Margin="2.5">
+                                    <Image Source="{Binding IconName}" HeightRequest="15"/>
+                                    <Label Text="{Binding Name}"  FontFamily="Questrial"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                    </FlexLayout>
+                    
+                    <!--Available Rooms Header-->
+                    <AbsoluteLayout HorizontalOptions="FillAndExpand" >
+                        <Polyline 
+                                      Points="0 0,210 0,180 45, 0 44"
+                                      StrokeLineJoin="Round" 
+                                      Fill="{StaticResource Primary}">
+                        </Polyline>
+                        <Label Text="Available Units" FontSize="Medium" Padding="20,10,0,10" TextColor="white"/>
+
+                    </AbsoluteLayout>
+                    <Label Text="Tap on the floor plan to view more details" FontSize="Small" Padding="20,0,0,0" TextColor="DarkRed"/>
+                    <!--Available Rooms List-->
+                    <FlexLayout BindableLayout.ItemsSource="{Binding AvailableRooms}"
+                                Direction="Column"
+                                x:Name="AvailableRoomsList">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal" Padding="10">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                               NumberOfTapsRequired="1"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:HotelDetailViewModel}}, Path=ViewSelectedRoomDetails}"		
+                                               CommandParameter="{Binding RoomID}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                        <StackLayout>
+                                            <Image Source="{Binding IconName}"
+                                                   VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Padding="10" x:DataType="model:Room">
+                                            <Label  
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" 
+                                            FontFamily="Questrial">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                            <Span Text="{Binding FloorPlan}"/>
+                                                            <Span Text=" - " />
+                                                            <Span Text="{Binding Price, StringFormat='{0:C0}'}"/>
+                                                            <Span Text="/mo"/>
+
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label  
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="13">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                            <Span Text="{Binding SqFeet}"/>
+                                                            <Span Text=" sqFt" />
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+
+                                    <!--Separator Line-->
+                                    <Line Stroke="{StaticResource Dark}" X1="0" X2="420" Y1="0" Y2="0"></Line>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                        
+                    </FlexLayout>
+                    <!--Actionable Buttons
+                    <StackLayout Padding="10">
+                        <Button Text="View Details"
+                        Command="{Binding ViewSelectedRoomDetails}"
+                        CommandParameter="{Reference AvailableRoomsList}"
+                        StyleClass="secondaryButton"
+                        HorizontalOptions="Fill"/>
+                        
+
+                    </StackLayout>
+                    -->
+                    
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

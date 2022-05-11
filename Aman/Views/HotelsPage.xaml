@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.HotelsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             xmlns:model ="clr-namespace:Aman.Models" >
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <RefreshView x:DataType="local:HotelsViewModel" Command="{Binding LoadHotelsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="HotelsListView"
+                                ItemsSource="{Binding Hotels}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!--Hotel Cell-->
+                            <StackLayout x:DataType="model:Hotel" >
+                                <Grid Padding="10">
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!--Hotel Image or Icon-->
+                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                        <AbsoluteLayout>
+                                          <Rectangle 
+                                                   WidthRequest="100"
+                                                   HeightRequest="100"
+                                                   HorizontalOptions="Start"
+                                                   RadiusX="10"
+                                                   RadiusY="10"
+                                                   AbsoluteLayout.LayoutBounds=".5,.5"
+                                                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                                          <Image Source="{Binding ThumbnailName}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5" HeightRequest="100"/>
+                                        </AbsoluteLayout>
+                                        
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                   NumberOfTapsRequired="1"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:HotelsViewModel}}, Path=HotelTapped}"		
+                                                   CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    
+                                    <!--Hotel Surface Info-->
+                                    <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="1">
+                                        
+                                        <Label Text="{Binding Address}" 
+                                               LineBreakMode="WordWrap"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="20" 
+                                               FontFamily="Bold-Assitant"/>
+                                        <Label Text="{Binding CityStateZip}" 
+                                               LineBreakMode="WordWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="16"
+                                               Padding="0,0,10,0"
+                                               FontFamily="Questrial"/>
+                                        <Label Text="Available Rooms" TextColor="black" FontSize="14" FontFamily="Bold-Assitant" TextDecorations="Underline"></Label>
+                                        <Label Text="{Binding AvailableRoomsList}" 
+                                               LineBreakMode="WordWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="Small"
+                                               Padding="0,0,10,0"
+                                               FontFamily="Questrial"/>
+                                        
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                               NumberOfTapsRequired="1"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:HotelsViewModel}}, Path=HotelTapped}"		
+                                               CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+
+                                </Grid>
+                                
+                                <!--Separator Line-->
+                                <Line Stroke="{StaticResource Primary}" X1="0" X2="420" Y1="0" Y2="0"></Line>
+                                
+                            </StackLayout>
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

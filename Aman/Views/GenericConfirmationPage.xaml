@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.GenericConfirmationPage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             Title="Confirmation">
+
+    <ContentPage.BindingContext>
+        <local:GenericConfirmationViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Primary}">
+            <Image Source="white_confirmCheck.png" VerticalOptions="CenterAndExpand" HeightRequest="150"/>
+            <Label Text="{Binding ConfirmationString}"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand"
+                   Padding="10"
+                   TextColor="{StaticResource Light}"
+                   HorizontalTextAlignment="Center"/>
+            <Button Text="OK"
+                    StyleClass="secondaryButton"
+                    VerticalOptions="EndAndExpand"
+                    Margin="10"
+                    Clicked="ConfirmationButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

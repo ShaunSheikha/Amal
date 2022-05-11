@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Aman.Views.LoginPage"
+             xmlns:local="clr-namespace:Aman.ViewModels"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <local:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource Light}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Light}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <StackLayout Padding="0" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}">
+            <Label Text="A M A L" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Header" 
+                   TextColor="{StaticResource Light}"
+                   LineBreakMode="NoWrap"/>
+            <StackLayout VerticalOptions="FillAndExpand" Padding="10">
+                <Entry Placeholder="Username" Text="{Binding UserName}"/>
+                <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Text="Forgot Password" HorizontalOptions="Start" TextDecorations="Underline"/>
+                    <Label Text="Create Account" HorizontalOptions="EndAndExpand" TextDecorations="Underline"/>
+                </StackLayout>
+                <Button Margin="20" 
+                    VerticalOptions="EndAndExpand" 
+                    Text="Login" 
+                    StyleClass="secondaryButton"
+                    Command="{Binding LoginCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

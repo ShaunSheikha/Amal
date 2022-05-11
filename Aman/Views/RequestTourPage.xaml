@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aman.Views.RequestTourPage"
+             xmlns:local ="clr-namespace:Aman.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:RequestTourViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    <ContentPage.Content>
+        <ScrollView>
+            
+            <StackLayout>
+                
+               
+                <!--Unit Info-->
+                <StackLayout Padding="5">
+                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                        <Image Source="location.png" HeightRequest="30"/>
+                        <Label VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Address}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding City}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding State}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Zipcode}"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                        <Image Source="XlSuite.png" HeightRequest="30"/>
+                        <Label VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Name}"/>
+                                        <Span Text=" - "/>
+                                        <Span Text="{Binding SqFeet}"/>
+                                        <Span Text=" sqFeet"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Margin="15,10,0,0" Text="Fill in your information below:" TextColor="DarkRed" FontSize="16" />
+                
+                <!--User Info-->
+                <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <local:CustomEntry x:Name="tourName" Placeholder="Tour Name (optional)" HorizontalOptions="FillAndExpand" Text="{Binding ReservationName}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <local:CustomEntry x:Name="userFirstName" Placeholder="First Name" HorizontalOptions="FillAndExpand" Text="{Binding UserFirstName}"/>
+                        <local:CustomEntry x:Name="userLastName" Placeholder="Last Name" HorizontalOptions="FillAndExpand" Text="{Binding UserLastName}"/>
+                    </StackLayout>
+                    <local:CustomEntry x:Name="userEmail" Placeholder="Email" Text="{Binding UserEmail}"/>
+                    <local:CustomEntry x:Name="userPhoneNumber" Placeholder="Phone Number" Text="{Binding UserPhoneNumber}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <local:CustomDatePicker x:Name="tourDate" HorizontalOptions="FillAndExpand" Date="{Binding TourDate}" />
+                        <local:CustomTimePicker x:Name="tourTime" HorizontalOptions="FillAndExpand" Time="{Binding TourTime}"/>
+                    </StackLayout>
+                    <Label Text="Comments: " FontSize="Medium" Padding="0,10,0,0"/>
+                    <local:CustomEditor x:Name="userComments" 
+                            Placeholder="Add any comments here..."
+                            AutoSize="TextChanges"
+                            Text="{Binding Comments}"/>
+                </StackLayout>
+                
+                <Button Text="Submit" 
+                        StyleClass="defaultButton"
+                        VerticalOptions="EndAndExpand"
+                        Margin="10"
+                        Clicked="SubmitTourRequestClicked"/>
+                
+            </StackLayout>
+            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
